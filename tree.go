@@ -28,7 +28,14 @@ type I3Node struct {
 	Window               int32
 	Urgent               bool
 	Focused              bool
-	Nodes                []I3Node
+	WindowProperties     struct {
+		Class        string      `json:"class"`
+		Instance     string      `json:"instance"`
+		WindowRole   string      `json:"window_role"`
+		Title        string      `json:"title"`
+		TransientFor interface{} `json:"transient_for"`
+	} `json:"window_properties"`
+	Nodes []I3Node
 }
 
 // GetTree fetches the layout tree.
